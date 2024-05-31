@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpfek8t1a5hl4"]
+
+[ext_resource type="Script" path="res://Scripts/rocket.gd" id="1_8ucfo"]
+[ext_resource type="Texture2D" uid="uid://cms3vxknarsag" path="res://Assets/textures/rocket.png" id="1_ggk0q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_240y7"]
+radius = 13.0
+height = 74.0
+
+[node name="Rocket" type="Area2D"]
+script = ExtResource("1_8ucfo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_ggk0q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_240y7")
+
+[node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-25, -1)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
